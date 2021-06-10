@@ -12,11 +12,11 @@ IMAGE_SIZE = 256
 CHANNELS_IMG = 3
 L1_LAMBDA = 100
 LAMBDA_GP = 10
-NUM_EPOCHS = 500
-LOAD_MODEL = False
+NUM_EPOCHS = 10
+LOAD_MODEL = True
 SAVE_MODEL = False
-CHECKPOINT_DISC = "weights/disc.pth.tar"
-CHECKPOINT_GEN = "weights/gen.pth.tar"
+CHECKPOINT_DISC = "disc.pth.tar"
+CHECKPOINT_GEN = "gen.pth.tar"
 
 both_transform = A.Compose(
     [A.Resize(width=256, height=256), ], additional_targets={"image0": "image"},
