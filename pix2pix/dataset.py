@@ -6,7 +6,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision.utils import save_image
 
 
-class MapDataset(Dataset):
+class WeebDataset(Dataset):
     def __init__(self, root_dir):
         self.root_dir = root_dir
         self.list_files = os.listdir(self.root_dir)
@@ -33,7 +33,7 @@ class MapDataset(Dataset):
 
 
 if __name__ == "__main__":
-    dataset = MapDataset("data/train/")
+    dataset = WeebDataset("data/train/")
     loader = DataLoader(dataset, batch_size=5)
     for x, y in loader:
         print(x.shape)

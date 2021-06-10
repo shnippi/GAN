@@ -7,7 +7,7 @@ class CNNBlock(nn.Module):
         super(CNNBlock, self).__init__()
         self.conv = nn.Sequential(
             nn.Conv2d(
-                in_channels, out_channels, 4, stride, 1, bias=False, padding_mode="reflect"
+                in_channels, out_channels, 4, stride, 1, bias=False, padding_mode="reflect"  # bias = False because BN
             ),
             nn.BatchNorm2d(out_channels),
             nn.LeakyReLU(0.2),
@@ -49,10 +49,10 @@ class Discriminator(nn.Module):
         self.model = nn.Sequential(*layers)
 
     def forward(self, x, y):
-        x = torch.cat([x, y], dim=1)
+        x = torch.cat([x, y], dim=1)  # concatonates along channel dimension --> 1, 6, 256, 256
         x = self.initial(x)
         x = self.model(x)
-        return x
+        return x  # returns a whole matrix of values instead of single scalar --> PATCHGAN
 
 
 def test():

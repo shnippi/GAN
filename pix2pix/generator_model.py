@@ -22,6 +22,7 @@ class Block(nn.Module):
         return self.dropout(x) if self.use_dropout else x
 
 
+# U-net similar architecture
 class Generator(nn.Module):
     def __init__(self, in_channels=3, features=64):
         super().__init__()
@@ -81,7 +82,7 @@ class Generator(nn.Module):
         d7 = self.down6(d6)
         bottleneck = self.bottleneck(d7)
         up1 = self.up1(bottleneck)
-        up2 = self.up2(torch.cat([up1, d7], 1))
+        up2 = self.up2(torch.cat([up1, d7], 1))  # uses skip connections, symmetrical to bottleneck
         up3 = self.up3(torch.cat([up2, d6], 1))
         up4 = self.up4(torch.cat([up3, d5], 1))
         up5 = self.up5(torch.cat([up4, d4], 1))
