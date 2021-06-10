@@ -85,9 +85,9 @@ def main():
     val_loader = DataLoader(val_dataset, batch_size=1, shuffle=True)
 
     for epoch in range(config.NUM_EPOCHS):
-        train_fn(
-            disc, gen, train_loader, opt_disc, opt_gen, L1_LOSS, BCE, g_scaler, d_scaler,
-        )
+        # train_fn(
+        #     disc, gen, train_loader, opt_disc, opt_gen, L1_LOSS, BCE, g_scaler, d_scaler,
+        # )
 
         if config.SAVE_MODEL and epoch % 5 == 0:
             save_checkpoint(gen, opt_gen, filename=config.CHECKPOINT_GEN)

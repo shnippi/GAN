@@ -19,8 +19,8 @@ class MapDataset(Dataset):
         img_path = os.path.join(self.root_dir, img_file)
         image = np.array(Image.open(img_path))
         # split the images in the middle
-        input_image = image[:, :600, :]
-        target_image = image[:, 600:, :]
+        target_image = image[:, :600, :]
+        input_image = image[:, 600:, :]
 
         augmentations = config.both_transform(image=input_image, image0=target_image)
         input_image = augmentations["image"]
