@@ -18,6 +18,7 @@ class MapDataset(Dataset):
         img_file = self.list_files[index]
         img_path = os.path.join(self.root_dir, img_file)
         image = np.array(Image.open(img_path))
+        # split the images in the middle
         input_image = image[:, :600, :]
         target_image = image[:, 600:, :]
 
