@@ -52,6 +52,7 @@ class Discriminator(nn.Module):
         x = torch.cat([x, y], dim=1)  # concatonates along channel dimension --> 1, 6, 256, 256
         x = self.initial(x)
         x = self.model(x)
+        # TODO: use sigmoid here?
         return x  # returns a whole matrix of values instead of single scalar --> PATCHGAN
 
 

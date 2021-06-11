@@ -86,7 +86,7 @@ def main():
     g_scaler = torch.cuda.amp.GradScaler()
     d_scaler = torch.cuda.amp.GradScaler()
     val_dataset = WeebDataset(root_dir=config.VAL_DIR)
-    val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False)
+    val_loader = DataLoader(val_dataset, batch_size=1, shuffle=True)
 
     for epoch in range(config.NUM_EPOCHS):
         if config.TRAIN_MODEL:
