@@ -157,7 +157,7 @@ def main():
             save_checkpoint(disc_H, opt_disc, filename=config.CHECKPOINT_CRITIC_H)
             save_checkpoint(disc_Z, opt_disc, filename=config.CHECKPOINT_CRITIC_Z)
 
-        save_some_examples(gen_H, val_loader, epoch, folder="evaluation")
+        save_some_examples(gen_Z, val_loader, epoch, folder="evaluation")
 
 
 if __name__ == "__main__":
