@@ -148,7 +148,8 @@ def main():
     d_scaler = torch.cuda.amp.GradScaler()
 
     for epoch in range(config.NUM_EPOCHS):
-        # train_fn(disc_H, disc_Z, gen_Z, gen_H, loader, opt_disc, opt_gen, L1, mse, d_scaler, g_scaler)
+        if config.TRAIN_MODEL:
+            train_fn(disc_H, disc_Z, gen_Z, gen_H, loader, opt_disc, opt_gen, L1, mse, d_scaler, g_scaler)
 
         if config.SAVE_MODEL:
             save_checkpoint(gen_H, opt_gen, filename=config.CHECKPOINT_GEN_H)
