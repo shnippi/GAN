@@ -134,7 +134,7 @@ def main():
     val_loader = DataLoader(
         val_dataset,
         batch_size=1,
-        shuffle=False,
+        shuffle=True,
         pin_memory=True,
     )
     loader = DataLoader(
@@ -157,7 +157,8 @@ def main():
             save_checkpoint(disc_H, opt_disc, filename=config.CHECKPOINT_CRITIC_H)
             save_checkpoint(disc_Z, opt_disc, filename=config.CHECKPOINT_CRITIC_Z)
 
-        save_some_examples(gen_Z, val_loader, epoch, folder="evaluation")
+        # TODO: find a way to get the results
+        # save_some_examples(gen_H, val_loader, epoch, folder="evaluation")
 
 
 if __name__ == "__main__":
