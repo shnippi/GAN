@@ -3,7 +3,7 @@ from utils import save_checkpoint, load_checkpoint, save_some_examples
 import torch.nn as nn
 import torch.optim as optim
 import config
-from dataset import WeebDataset
+from dataset import WeebDataset, selfDataset
 from generator_model import Generator
 from discriminator_model import Discriminator
 from torch.utils.data import DataLoader
@@ -87,6 +87,8 @@ def main():
     d_scaler = torch.cuda.amp.GradScaler()
     val_dataset = WeebDataset(root_dir=config.VAL_DIR)
     val_loader = DataLoader(val_dataset, batch_size=1, shuffle=True)
+    self_dataset = selfDataset(root_dir=config.SELF_DIR)
+    self_loader = DataLoader(self_dataset, batch_size=1, shuffle=True)
 
     for epoch in range(config.NUM_EPOCHS):
         if config.TRAIN_MODEL:
@@ -98,7 +100,7 @@ def main():
             save_checkpoint(gen, opt_gen, filename=config.CHECKPOINT_GEN)
             save_checkpoint(disc, opt_disc, filename=config.CHECKPOINT_DISC)
 
-        save_some_examples(gen, val_loader, epoch, folder="evaluation")
+        save_some_examples(gen, self_loader, epoch, folder="evaluation")
 
 
 if __name__ == "__main__":

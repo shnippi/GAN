@@ -2,8 +2,10 @@ import torch
 import config
 from torchvision.utils import save_image
 
+# TODO: change the code depending on the dataset
 def save_some_examples(gen, val_loader, epoch, folder):
-    x, y = next(iter(val_loader))
+    x = next(iter(val_loader))
+    y = x
     x, y = x.to(config.DEVICE), y.to(config.DEVICE)
     gen.eval()
     with torch.no_grad():
